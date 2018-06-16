@@ -1,0 +1,45 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
+android {
+    compileSdkVersion 27
+    defaultConfig {
+        applicationId "com.github.ojh.example.clutter"
+        minSdkVersion 19
+        targetSdkVersion 27
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    dataBinding {
+        enabled = true
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation project(':clutter')
+    implementation"org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+
+    kapt "com.android.databinding:compiler:$rootProject.android_gradle_version"
+    kapt "android.arch.lifecycle:compiler:$rootProject.lifecycle_version"
+    kapt "android.arch.persistence.room:compiler:$rootProject.room_version"
+    kapt "com.google.dagger:dagger-compiler:$rootProject.dagger_version"
+    kapt "com.google.dagger:dagger-android-processor:$rootProject.dagger_version"
+
+    testImplementation "junit:junit:$rootProject.junit_version"
+    androidTestImplementation "com.android.support.test:runner:$rootProject.runner_version"
+    androidTestImplementation "com.android.support.test.espresso:espresso-core:$rootProject.espresso_version"
+}
+
+apply plugin: 'com.github.dcendents.android-maven'
+group='com.github.ojh102'
