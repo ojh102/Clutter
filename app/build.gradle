@@ -40,6 +40,3 @@ dependencies {
     androidTestImplementation "com.android.support.test:runner:$rootProject.runner_version"
     androidTestImplementation "com.android.support.test.espresso:espresso-core:$rootProject.espresso_version"
 }
-
-apply plugin: 'com.github.dcendents.android-maven'
-group='com.github.ojh102'
